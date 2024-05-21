@@ -24,7 +24,7 @@ node index.js
 
 ## Endpoints
 
-### GET /animals
+### GET api/animals
 
 This endpoint returns a list of all animals.
 
@@ -69,7 +69,7 @@ Response example:
         ]
 ```
 
-### GET /animals/{id}
+### GET api/animals/{id}
 
 This endpoint returns the animal with the specified id.
 
@@ -93,7 +93,7 @@ Response example:
     }
 ```
 
-### GET /enviroment
+### GET api/enviroment
 
 This endpoint returns the enviroments where animals live.
 
@@ -123,7 +123,7 @@ This endpoint returns the enviroments where animals live.
     ]
 ```
 
-### GET /enviroment/{id}
+### GET api/enviroment/{id}
 
 This endpoint returns the enviroment with the specified id.
 
