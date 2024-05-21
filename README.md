@@ -2,6 +2,11 @@
 
 This is a simple web API that allows you to manage a list of animals. You can add, update, delete and list animals.
 
+## Public endpoints
+
+API endpoints can be accessed at: 
+https://animals.juanfrausto.com/api/animals
+
 ## Setup
 
 To run this project, you need to have the following tools installed:
