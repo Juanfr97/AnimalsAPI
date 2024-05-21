@@ -1,0 +1,28 @@
+name: Docker Build & Publish
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: docker build -t ghcr.io/juanfr97/animals-api:${{ github.sha }} .
+
+      - name: Tag Latest
+        run: docker tag ghcr.io/juanfr97/animals-api:${{ github.sha }} ghcr.io/juanfr97/animals-api:latest
+        
+      - name: Log into GitHub Container Registry
+        run: docker login ghcr.io -u ${{ github.repository_owner }} --password ${{ secrets.CR_PAT }}
+
+      - name: Push Docker Images to GitHub Container Registry
+        run: |
+          docker push ghcr.io/juanfr97/animals-api:${{ github.sha }}
+          docker push ghcr.io/juanfr97/animals-api:latest
