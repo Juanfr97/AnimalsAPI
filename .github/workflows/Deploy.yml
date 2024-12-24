@@ -13,16 +13,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Login
+        run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD  }}"
+
       - name: Build Docker Image
-        run: docker build -t ghcr.io/juanfr97/animals-api:${{ github.sha }} .
+        run: docker build -t juanfr97/animals-api:${{ github.sha }} .
 
       - name: Tag Latest
-        run: docker tag ghcr.io/juanfr97/animals-api:${{ github.sha }} ghcr.io/juanfr97/animals-api:latest
+        run: docker tag juanfr97/animals-api:${{ github.sha }} juanfr97/animals-api:latest
         
       - name: Log into GitHub Container Registry
         run: docker login ghcr.io -u ${{ github.repository_owner }} --password ${{ secrets.CR_PAT }}
 
       - name: Push Docker Images to GitHub Container Registry
         run: |
-          docker push ghcr.io/juanfr97/animals-api:${{ github.sha }}
-          docker push ghcr.io/juanfr97/animals-api:latest
+          docker push juanfr97/animals-api:${{ github.sha }}
+          docker push juanfr97/animals-api:latest
