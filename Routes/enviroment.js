@@ -25,19 +25,19 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST create new environment
-// router.post('/', (req, res) => {
-//     const environment = new Environment({
-//         name: req.body.name,
-//         image: req.body.image,
-//         description: req.body.description
-//     });
-//     environment.save()
-//         .then(data => {
-//             res.json(data);
-//         })
-//         .catch(e => {
-//             res.json({message: e})
-//         });
-// });
+router.post('/', (req, res) => {
+    const environment = new Environment({
+        name: req.body.name,
+        image: req.body.image,
+        description: req.body.description
+    });
+    environment.save()
+        .then(data => {
+            res.json(data);
+        })
+        .catch(e => {
+            res.json({message: e})
+        });
+});
 
 module.exports = router;

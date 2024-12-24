@@ -21,9 +21,6 @@ jobs:
 
       - name: Tag Latest
         run: docker tag juanfr97/animals-api:${{ github.sha }} juanfr97/animals-api:latest
-        
-      - name: Log into GitHub Container Registry
-        run: docker login ghcr.io -u ${{ github.repository_owner }} --password ${{ secrets.CR_PAT }}
 
       - name: Push Docker Images to GitHub Container Registry
         run: |
