@@ -74,6 +74,10 @@ Response example:
         ]
 ```
 
+### GET api/animals?enviromentId=envId
+
+This endpoint returns the animals with a specific enviroment. 
+
 ### GET api/animals/{id}
 
 This endpoint returns the animal with the specified id.
