@@ -15,7 +15,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/animals',animals)
 app.use('/api/environments',enviroments)
-
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
 mongoose.connect(
     dbConnectionString
     , {useNewUrlParser: true, useUnifiedTopology:true})

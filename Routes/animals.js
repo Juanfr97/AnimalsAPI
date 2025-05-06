@@ -11,7 +11,14 @@ router.get('/', async (req, res) => {
         }
         
         const animals = await Animal.find(query);
-        res.json(animals);
+        const animalsWithId = animals.map(animal => {
+            const obj = animal.toObject();
+            obj.id = obj._id;
+            delete obj._id;
+            delete obj.__v;
+            return obj;
+        });
+        res.json(animalsWithId);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -21,7 +28,12 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const animal = await Animal.findById(req.params.id);
-        res.json(animal);
+        
+        const obj = animal.toObject();
+        obj.id = obj._id;
+        delete obj._id;
+
+        res.json(obj);
     }
     catch (err) {
         res.status(404).json({ message: 'Animal not found' });
